@@ -1,0 +1,28 @@
+name: Create date tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create date tag
+        run: |
+          TAG="$(date +'%Y-%m-%d')"
+          # 同日に複数回プッシュされた場合はサフィックスを付与
+          if git ls-remote --tags origin "refs/tags/${TAG}" | grep -q .; then
+            COUNT=1
+            while git ls-remote --tags origin "refs/tags/${TAG}.${COUNT}" | grep -q .; do
+              COUNT=$((COUNT + 1))
+            done
+            TAG="${TAG}.${COUNT}"
+          fi
+          git tag "$TAG"
+          git push origin "$TAG"
