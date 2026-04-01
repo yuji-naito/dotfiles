@@ -1,0 +1,26 @@
+# claude
+config/claude/.claude.json
+config/claude/.claude.json.backup*
+config/claude/backups/
+config/claude/cache/
+config/claude/debug/
+config/claude/file-history/
+config/claude/history.jsonl
+config/claude/image-cache/
+config/claude/mcp-needs-auth-cache.json
+config/claude/paste-cache/
+config/claude/plans/
+config/claude/plugins/
+config/claude/private-marketplaces.json
+config/claude/projects/
+config/claude/session-env/
+config/claude/sessions/
+config/claude/shell-snapshots/
+config/claude/stats-cache.json
+config/claude/statsig/
+config/claude/tasks/
+config/claude/teams/
+config/claude/telemetry/
+config/claude/todos/
+config/claude/usage-data/
+config/claude/ide/
