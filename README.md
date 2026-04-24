@@ -2,4 +2,10 @@
 
 ## 我が家のマスコット
 
-![Hanio mascot](assets/hanio_01.jpg)
+![Hanio mascott](assets/hanio_01.jpg)
+
+## Brewfileの更新
+
+```shell
+brew bundle dump -f
+```
