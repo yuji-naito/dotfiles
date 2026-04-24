@@ -96,5 +96,6 @@
   },
   "language": "日本語",
   "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "plansDirectory": "./plans"
 }

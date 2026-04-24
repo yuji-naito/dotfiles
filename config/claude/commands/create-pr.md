@@ -1,4 +1,5 @@
 ---
+allowed-tools: Bash(git push:*)
 description: Create a pull request
 ---
 
