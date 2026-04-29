@@ -1,3 +1,9 @@
+# stripe
+config/stripe
+
+# yarn
+config/yarn
+
 # claude
 config/claude/.claude.json
 config/claude/.claude.json.backup*
@@ -24,3 +30,5 @@ config/claude/telemetry/
 config/claude/todos/
 config/claude/usage-data/
 config/claude/ide/
+
+nvim.bak
