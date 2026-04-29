@@ -20,7 +20,10 @@
       "mcp__crome-devtools",
       "mcp__gemini-cli",
       "mcp__aws-cdk-mcp-server",
-      "mcp__aws-documentation-mcp-server"
+      "mcp__aws-documentation-mcp-server",
+      "Skill(commit)",
+      "Skill(create-pr)",
+      "Skill(exec-issue)"
     ],
     "deny": [
       "Bash(aws s3 rm:*)",
