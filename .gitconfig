@@ -1,0 +1,13 @@
+[user]
+	name = ynaito
+	email = naitya0412@gmail.com
+[init]
+	defaultBranch = main
+[alias]
+	wtl = worktree list
+	wta = worktree add
+	wtr = worktree remove
+[core]
+	editor = vim
+[ghq]
+	root = ~/src
