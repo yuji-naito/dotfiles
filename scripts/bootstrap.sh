@@ -28,3 +28,10 @@ brew bundle install --file="${DOTFILES_DIR}/Brewfile"
 if [ "$(uname)" = "Darwin" ]; then
   touch "${HOME}/.hushlogin"
 fi
+
+# Create symlinks
+ln -sf "${DOTFILES_DIR}/.gitconfig" "${HOME}/.gitconfig"
+ln -sf "${DOTFILES_DIR}/config/claude" "${HOME}/.config/claude"
+ln -sf "${DOTFILES_DIR}/config/wezterm" "${HOME}/.config/wezterm"
+ln -sf "${DOTFILES_DIR}/config/nvim" "${HOME}/.config/nvim"
+ln -sf "${DOTFILES_DIR}/config/mise" "${HOME}/.config/mise"
