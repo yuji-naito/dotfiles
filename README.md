@@ -1,8 +1,7 @@
 # Dotfiles
 
-## 我が家のマスコット
+## 我が家のマスコット(カワイイ)
 
-カワイイ
 ![Hanio mascott](assets/hanio_01.jpg)
 
 ## セットアップ
