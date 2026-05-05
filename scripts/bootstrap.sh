@@ -30,6 +30,7 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 # Create symlinks
+ln -sf "${DOTFILES_DIR}/config/zsh/.zshrc" "${HOME}/.zshrc"
 ln -sf "${DOTFILES_DIR}/.gitconfig" "${HOME}/.gitconfig"
 ln -sf "${DOTFILES_DIR}/config/claude" "${HOME}/.config/claude"
 ln -sf "${DOTFILES_DIR}/config/wezterm" "${HOME}/.config/wezterm"
