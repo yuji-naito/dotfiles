@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+source "$SCRIPT_DIR/consts/ecs-common.sh"
+
+PROFILE="ZentechProd"
+CLUSTER="prod-safetyzone"
+
+SELECTION=$("$SCRIPT_DIR/ecs-task-select" "$CLUSTER" "$PROFILE")
+
+if [[ -z "$SELECTION" ]]; then
+  echo "Canceled."
+  exit 0
+fi
+
+CONTAINER=$(echo "$SELECTION" | awk '{print $1}')
+TASK_ID=$(echo "$SELECTION" | awk '{print $2}')
+
+aws ecs execute-command \
+  --region "$REGION" \
+  --cluster "$CLUSTER" \
+  --container "$CONTAINER" \
+  --task "$TASK_ID" \
+  --interactive \
+  --command "$COMMAND" \
+  --profile "$PROFILE"

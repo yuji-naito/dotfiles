@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+source "$SCRIPT_DIR/consts/ecs-common.sh"
+
+# 接続先クラスタは第1引数、AWS プロファイルは第2引数で受け取る。
+# プロファイル未指定時は ecs-common.sh の既定値（ZentechNonProd）を使う。
+CLUSTER="${1:-${CLUSTER:-}}"
+PROFILE="${2:-${PROFILE:-}}"
+if [[ -z "$CLUSTER" ]]; then
+  echo "Usage: ${0##*/} <cluster> [profile]" >&2
+  exit 1
+fi
+
+TASK_ARNS=$(
+  aws ecs list-tasks \
+    --cluster "$CLUSTER" \
+    --region "$REGION" \
+    --profile "$PROFILE" \
+    --query 'taskArns[*]' \
+    --output text
+)
+
+if [[ -z "$TASK_ARNS" ]]; then
+  exit 1
+fi
+
+# クラスタ内の全タスクのコンテナを集計し、コンテナ名ごとに最新タスク
+# （startedAt が最大のもの）を割り当てて選択肢として提示する。
+# 選択結果は "<container> <task_id>" の 1 行を標準出力に返す。
+ROWS=$(
+  {
+    printf 'CONTAINER\tSERVICE\tREVISION\tSTARTED_AT\tTASK_ID\n'
+    aws ecs describe-tasks \
+      --cluster "$CLUSTER" \
+      --tasks $TASK_ARNS \
+      --region "$REGION" \
+      --profile "$PROFILE" \
+      --output json \
+    | jq -r '
+        [ .tasks[]
+          | . as $t
+          | .containers[]
+          | {
+              container: .name,
+              service:  (($t.group // "") | sub("^service:"; "")),
+              revision: ($t.taskDefinitionArn | split("/") | last),
+              startedAt:($t.startedAt // ""),
+              taskId:   ($t.taskArn | split("/") | last)
+            }
+        ]
+        | group_by(.container)
+        | map(max_by(.startedAt))
+        | sort_by(.container)[]
+        | [.container, .service, .revision, .startedAt, .taskId]
+        | @tsv
+      '
+  } | column -t -s $'\t'
+)
+
+# fzf キャンセル時は終了コード 130 になるため set -e を発火させない
+SELECTION=$(printf '%s\n' "$ROWS" | fzf --prompt="Select Container > " --header-lines=1 || true)
+
+if [[ -z "$SELECTION" ]]; then
+  exit 0
+fi
+
+# 先頭=コンテナ名、末尾=タスクID
+echo "$SELECTION" | awk '{print $1, $NF}'

@@ -15,6 +15,7 @@ export PATH="$HOME/.antigravity/antigravity/bin:$PATH" # Added by Antigravity
 
 # 自前のツール群
 export PATH="$HOME/.dotfiles/tools:$PATH"
+export PATH="$HOME/.dotfiles/tools/zentech-ecs:$PATH"
 
 eval "$(starship init zsh)" # Starship
 eval "$(zoxide init zsh)" # zoxide
