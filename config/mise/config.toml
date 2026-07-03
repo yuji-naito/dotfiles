@@ -1,0 +1,62 @@
+[tools]
+# Language runtimes
+go = "latest"
+node = "24"
+python = "latest"
+ruby = "latest"
+rust = "latest"
+
+# CLIs
+firebase = "latest"
+terraform = "latest"
+awscli = { version = "latest", symlink_bins = "true" }
+uv = "latest"
+gh = "latest"
+devcontainer-cli = "latest"
+lazygit = "latest"
+starship = "latest"
+stripe = "latest"
+jq = "latest"
+lazydocker = "latest"
+fzf = "latest"
+neovim = "latest"
+golangci-lint = "latest"
+mas = "latest"
+"cargo:treemd" = "latest"
+gemini-cli = "latest"
+copilot-cli = "latest"
+ghq = "latest"
+aws-sam-cli = { version = "latest", symlink_bins = "true" }
+zoxide = "latest"
+bat = "latest"
+delta = "latest"
+serverless = { version = "latest", allow_builds = ["serverless"] }
+
+[shell_alias]
+vim = "nvim"
+ll = "ls -al"
+la = "ls -A"
+gs = "git status"
+gc = "git commit"
+dc = "docker compose"
+deve = "devcontainer exec"
+set_zentech_prod_aws_profile = "export AWS_PROFILE=ZentechProd"
+set_zentech_nonprod_aws_profile = "export AWS_PROFILE=ZentechNonProd"
+sso_aws_zentech_prod = "aws configure sso --profile ZentechProd"
+sso_aws_zentech_nonprod = "aws configure sso --profile ZentechNonProd"
+login_aws_zentech_nonprod = "aws sso login --profile ZentechNonProd"
+login_aws_zentech_prod = "aws sso login --profile ZentechProd"
+
+[settings]
+trusted_config_paths = [
+  "~/src/github.com/ZENTech-Team/teamu",
+  "~/src/github.com/ZENTech-Team/team-days-api"
+]
+idiomatic_version_file_enable_tools = [
+  "ruby",
+  "node",
+  "npm",
+  "go",
+  "rust"
+]
+experimental = true
