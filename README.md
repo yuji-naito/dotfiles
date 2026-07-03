@@ -7,11 +7,11 @@
 ## セットアップ
 
 ```shell
-sh scripts/bootstrap.sh
+make init
 ```
 
 ## Brewfileの更新
 
 ```shell
-sh scripts/update.sh
+make update
 ```
