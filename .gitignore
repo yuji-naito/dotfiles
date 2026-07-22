@@ -5,3 +5,7 @@ config/stripe
 config/yarn
 
 nvim.bak
+
+# herdr
+/config/herdr/*
+!/config/herdr/config.toml
