@@ -6,6 +6,19 @@ config/yarn
 
 nvim.bak
 
+# claude
+/config/claude/*
+!/.gitignore
+!/CLAUDE.md
+!/settings.json
+!/commands/
+!/agents/
+!/skills/
+!/rules/
+!/output-styles/
+!/hooks/
+!/scripts/
+
 # herdr
 /config/herdr/*
 !/config/herdr/config.toml
