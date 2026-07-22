@@ -1,4 +1,4 @@
-tap "k1low/tap"
+tap "k1low/tap", "https://github.com/k1LoW/homebrew-tap"
 tap "manaflow-ai/cmux"
 tap "openclaw/tap"
 tap "steipete/tap"
@@ -57,8 +57,6 @@ cask "appcleaner"
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
-cask "cmux"
 # Universal database tool and SQL client
 cask "dbeaver-community"
 # Voice and text chat software
@@ -103,8 +101,6 @@ cask "slack"
 cask "steam"
 # Open-source code editor
 cask "visual-studio-code"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm@nightly"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
@@ -150,6 +146,4 @@ vscode "shopify.ruby-lsp"
 vscode "thadeu.vscode-run-rspec-file"
 go "cmd/go"
 go "cmd/gofmt"
-go "golang.org/x/tools/cmd/goimports"
-go "golang.org/x/tools/gopls"
 npm "corepack"
