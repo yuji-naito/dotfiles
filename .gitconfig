@@ -7,7 +7,9 @@
 	wtl = worktree list
 	wta = worktree add
 	wtr = worktree remove
+	rs = reset --soft HEAD~1
 [core]
 	editor = vim
+	pager = delta
 [ghq]
 	root = ~/src
