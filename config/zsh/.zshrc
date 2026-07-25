@@ -8,7 +8,6 @@ bindkey -e
 eval "$(mise activate zsh)" # Activate mise
 
 # PATHの設定
-export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH" # Added by Antigravity
