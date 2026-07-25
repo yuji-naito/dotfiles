@@ -8,16 +8,15 @@ nvim.bak
 
 # claude
 /config/claude/*
-!/.gitignore
-!/CLAUDE.md
-!/settings.json
-!/commands/
-!/agents/
-!/skills/
-!/rules/
-!/output-styles/
-!/hooks/
-!/scripts/
+!/config/claude/CLAUDE.md
+!/config/claude/settings.json
+!/config/claude/agents/
+!/config/claude/commands/
+!/config/claude/hooks/
+!/config/claude/output-styles/
+!/config/claude/rules/
+!/config/claude/scripts/
+!/config/claude/skills/
 
 # herdr
 /config/herdr/*
