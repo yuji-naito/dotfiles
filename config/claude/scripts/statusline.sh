@@ -34,10 +34,11 @@ input=$(cat)
 
 MODEL=$(echo "$input" | jq -r '.model.display_name // "Unknown"') # モデル名
 DIR=$(echo "$input" | jq -r '.workspace.current_dir') # 現在のパス
-BRANCH=$(git -C "$CWD" --no-optional-locks branch --show-current 2>/dev/null) # gitブランチ名
-CTX_USED=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
-FIVE_H=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0') # リミット氏王立(5時間)
-SEVEN_D=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // 0') # リミット使用率(7日間)
+BRANCH=$(git -C "$DIR" --no-optional-locks branch --show-current 2>/dev/null) # gitブランチ名
+# used_percentageは小数で来ることがあるため、整数比較(-ge)できるよう丸める
+CTX_USED=$(printf '%.0f' "$(echo "$input" | jq -r '.context_window.used_percentage // 0')")
+FIVE_H=$(printf '%.0f' "$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0')") # リミット使用率(5時間)
+SEVEN_D=$(printf '%.0f' "$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // 0')") # リミット使用率(7日間)
 COST=$(echo "$input" | jq -r '.cost.total_cost_usd // 0') # コスト
 
 if [ "$CTX_USED" -ge 90 ]; then CTX_COLOR="$RED"
