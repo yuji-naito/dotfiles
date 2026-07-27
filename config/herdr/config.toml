@@ -9,16 +9,17 @@ onboarding = false
 # Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
 #                  gruvbox, one-dark, solarized, kanagawa, rose-pine,
 #                  vesper
-# name = "catppuccin"
+name = "terminal"
 
 # Follow host terminal light/dark appearance and switch Herdr UI themes.
 # Existing manual behavior is unchanged unless this is true.
-# auto_switch = false
+auto_switch = false
 # dark_name = "catppuccin"
 # light_name = "catppuccin-latte"
 
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
+
 [theme.custom]
 # エージェントパネルのセル2行目(実行コマンド)の文字色。DIM修飾がかかるため明るめに設定
 #overlay0 = "#ffffff"
@@ -218,6 +219,8 @@ directory = "~/src/herdr/worktrees"
 # Background notification popup delivery
 # agent_panel_sort = "spaces"
 # show_agent_labels_on_pane_borders = false
+show_agent_labels_on_pane_borders = false
+agent_panel_sort = "spaces"
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts
@@ -235,7 +238,7 @@ directory = "~/src/herdr/worktrees"
 
 # Play sounds when agents change state in background workspaces
 [ui.sound]
-# enabled = true
+enabled = false
 # Optional custom mp3 sound files. Relative paths are resolved from this config file's directory.
 # path = "sounds/notification.mp3"   # one mp3 file for all sound notifications
 # done_path = "sounds/done.mp3"      # overrides only finished notifications
@@ -243,7 +246,7 @@ directory = "~/src/herdr/worktrees"
 
 # Per-agent overrides: default | on | off
 # By default, droid is muted.
-# [ui.sound.agents]
+[ui.sound.agents]
 # droid = "off"
 
 [session]

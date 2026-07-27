@@ -21,3 +21,7 @@ nvim.bak
 # herdr
 /config/herdr/*
 !/config/herdr/config.toml
+
+# zed
+/config/zed/*
+!/config/zed/settings.json
